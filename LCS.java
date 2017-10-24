@@ -1,4 +1,6 @@
 // Bijan Razavi.
+// Elizabeth Thomas
+// Gyovanni Boston-Crompton
 
 /*
 
@@ -53,6 +55,7 @@
 */
 
 import java.io.*;
+
 import java.util.*;
 
 public class LCS {

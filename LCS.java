@@ -78,7 +78,7 @@ public class LCS {
 	  writefile wF = new writefile ();
 
 	  // Gets access to the Qsort class.
-	  Qsort qS = new Qsort ();
+	  LCS qS = new LCS ();
 
 	  // Attempts to open selected file(s).
 	  for (int i = 0; i < args.length; i++) {

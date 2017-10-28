@@ -65,5 +65,4 @@ public class LCSMethodClass {
 //        System.out.println("\n The length is " + table[str1Length][str2Length]);
 //        System.out.println("------------------------------------------------------------------");
 	}
-
 }

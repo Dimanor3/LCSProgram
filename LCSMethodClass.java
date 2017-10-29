@@ -1,11 +1,11 @@
-//hellloo there
+
 public class LCSMethodClass {
 
 	/**
 	 *
-	 * @param str1
-	 * @param str2
-	 * @return lcs
+	 * @param str1: This will hold the first string to compare.
+	 * @param str2: This will hold the second string to compare.
+	 * @return lcs: This will return the array of the strings.
 	 */
 	public static char[] findLCS(String str1, String str2)
 	{

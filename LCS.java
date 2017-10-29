@@ -1,11 +1,11 @@
-/* 	
+/*
 	Bijan Razavi
 	Elizabeth Thomas
 	Gyovanni Boston-Crompton
 */
 
 /*
-	README file by Bijan Razavi
+	README file
 	---------------------------
 
 	Program Design Description
@@ -119,7 +119,7 @@ public class LCS {
                 lcsListString += "-----------------------------------------------------" + System.lineSeparator ();
             }
         }
-        
+
         if (lcsList.size () == 0) {
             lcsListString += "The input file is empty, please try again!" + System.lineSeparator ();
         }
@@ -130,17 +130,22 @@ public class LCS {
 
 		wF.addOrderedList (lcsListString);
 	}
-
+	/**
+	* This method will find the strings that are most common from the array of strings.
+	* @param String str1: This will hold the first string.
+	* @param String str2: This will hold the second string.
+	* @return String (lcs): This will return the short string of the lcs.
+	*/
 	public static String findLCS(String str1, String str2) {
 		// Gets the length size of each string.
 		int str1Length = str1.length ();
 		int str2Length = str2.length ();
-		
+
 		// Builds a table out of the string sizes.
 		int[][] table = new int[str1Length + 1][str2Length + 1];
 
 		/*
-			Bottom up, compare characters in each 
+			Bottom up, compare characters in each
 			element of the table and fill the table
 			with integers accordingly.
 		*/
@@ -163,11 +168,11 @@ public class LCS {
 
 		/*
 			Move through the table and store the
-			characters in the LCS output array 
+			characters in the LCS output array
 			from the table.
 		*/
 		int i = str1Length, j = str2Length;
-		
+
 		/*
 			Traverses through each possible location check,
 			and determines whether the characters at indices

@@ -61,7 +61,7 @@ import java.util.*;
 
 public class LCS {
 	public static void main (String[] args) {
-		String orderedListString = "";
+		String lcsListString = "";
 
 		// Takes the unorderedList to be ordered.
 		ArrayList<String> lcsList = new ArrayList<String> ();
@@ -70,7 +70,7 @@ public class LCS {
 
         ArrayList<String> finalizedLCS = new ArrayList<String> ();
 
-		ArrayList<Integer> listSize = new ArrayList<Integer> ();
+		ArrayList<Integer> lcsLength = new ArrayList<Integer> ();
 
 		int totalListSize = 0;
 
@@ -89,7 +89,7 @@ public class LCS {
 
 			tempList = rF.readFile ();
 
-			listSize.add (tempList.size ());
+			lcsLength.add (tempList.size ());
 
 			totalListSize += tempList.size ();
 
@@ -106,7 +106,8 @@ public class LCS {
 		double start = System.currentTimeMillis ();
 
 		for (int i = 0; i < args.length; i += 2) {
-    		orderedList = findLCS (lcsList[i], lcsList[i + 1]);
+            if (lcsList.size () != i + 1)
+        		finalizedLCS.add (findLCS (lcsList[i], lcsList[i + 1]));
         }
 
 		// Gets the ending time of Quick Sort.
@@ -118,20 +119,38 @@ public class LCS {
 		// Creates answer.txt to be written to.
 		wF.createFile ();
 
-		// Fills orderedListString with all the information it needs to output.
-		orderedListString = "Sorting result:" + System.lineSeparator();
-		orderedListString += orderedList.toString ().replaceAll ("[\\[\\]]", "").replaceAll (",", ";") + System.lineSeparator () + System.lineSeparator();
-		orderedListString += "Performance" + System.lineSeparator () + "analysis: Input file\t\tSorting Time (in milliseconds)" + System.lineSeparator();
-		orderedListString += "Size " + args[0] + ":\t" + listSize.get (0) + "\t\t" + totalTime + System.lineSeparator ();
+        /*
+		// Fills lcsListString with all the information it needs to output.
+		lcsListString = "Sorting result:" + System.lineSeparator();
+		lcsListString += orderedList.toString ().replaceAll ("[\\[\\]]", "").replaceAll (",", ";") + System.lineSeparator () + System.lineSeparator();
+		lcsListString += "Performance" + System.lineSeparator () + "analysis: Input file\t\tSorting Time (in milliseconds)" + System.lineSeparator();
+		lcsListString += "Size " + args[0] + ":\t" + lcsLength.get (0) + "\t\t" + totalTime + System.lineSeparator ();
 
 		// Appends the name and size of every input file other than first input file.
 		for (int i = 1; i < args.length; i++) {
-			orderedListString += "Size " + args[i] + ":\t" + listSize.get (i) + System.lineSeparator ();
+			lcsListString += "Size " + args[i] + ":\t" + lcsLength.get (i) + System.lineSeparator ();
 		}
 
-		orderedListString += "Total size of all lists: " + totalListSize;
+		lcsListString += "Total size of all lists: " + totalListSize;
+        */
 
-		wF.addOrderedList (orderedListString);
+        for (int i = 0; i < args.length; i += 2) {
+            if (lcsList.size () != i + 1) {
+                lcsListString += "-----------------------------------------------------" + System.lineSeparator ();
+                lcsListString += "The DNA strands:" + System.lineSeparator ();
+                lcsListString += "\t" + lcsList[i] + System.lineSeparator ();
+                lcsListString += "\t" + lcsList[i + 1] + System.lineSeparator ();
+                lcsListString += "LCS is " + finalizedLCS[i / 2] + System.lineSeparator ();
+                lcsListString += "LCS length is " + lcsLength.get (i / 2) + "." + System.lineSeparator ();
+                lcsListString += "-----------------------------------------------------" + System.lineSeparator ();
+            }
+        }
+        
+        lcsListString += System.lineSeparator ();
+        lcsListString += "Running time: " + totalTime + " seconds" + System.lineSeparator ();
+        lcsListString += "-----------------------------------------------------";
+
+		wF.addOrderedList (lcsListString);
 	}
 
 	public static String findLCS(String str1, String str2) {

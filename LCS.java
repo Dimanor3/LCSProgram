@@ -11,8 +11,8 @@
 	Program Design Description
 	--------------------------
 
-	For this I had 3 classes, all which were imported from the insertion sort homework.
-	With these 3 classes, I went ahead and modified them to both include quicksort
+	For this we had 3 classes, all which were imported from the insertion sort homework.
+	With these 3 classes, we went ahead and modified them to both include quicksort
 	as well as fix any issues that the previous assignment had and add some new functionality.
 
 	Breakdown of Algorithm
@@ -27,30 +27,30 @@
 	My Compiler
 	-----------
 
-	I wrote my program in java, so my compiler was javac.
+	We wrote our program in java, so my compiler was javac.
 
 	My Platform
 	-----------
 
-	The platform I used to write this program in is an Intel i5 processor
+	The platform we used to write this program in is an Intel i5 processor
 	running windows 10.
 
 	What works and Fails
 	--------------------
 
-	My program properly reads any number of files, places them into an ArrayList,
+	Our program properly reads any number of files, places them into an ArrayList,
 	checks the amount of time it takes for the program to run, and outputs all the
 	required information.
 
 	The part this program currently fails in is the quicksort itself. Unfortunately,
-	I wasn't able to get this sorting algorithm to run properly as it currently sets
+	we weren't able to get this sorting algorithm to run properly as it currently sets
 	every position as the pivot and does this multiple times. This was more than likely
-	because I don't have a proper quit functionality in place.
+	because we don't have a proper quit functionality in place.
 
 	Data Structure Design Description
 	---------------------------------
 
-	The data structure I choose to use was an arraylist, this is because arraylists are
+	The data structure we choose to use was an arraylist, this is because arraylists are
 	scalable unlike their array counterparts. This is very convenient for this project
 	since the list of numbers we could be given can end up being any size.
 */
@@ -130,6 +130,7 @@ public class LCS {
 
 		wF.addOrderedList (lcsListString);
 	}
+
 	/**
 	* This method will find the strings that are most common from the array of strings.
 	* @param String str1: This will hold the first string.

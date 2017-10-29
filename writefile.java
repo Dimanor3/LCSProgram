@@ -13,7 +13,7 @@ import java.io.FileWriter;
 *	This class takes in a string and writes it into a .txt file called answers.txt.
 */
 public class writefile {
-	/**
+ /**
 	* This function creates a new file, answers.txt, assuming the file doesn't already exist.
 	*/
 	public void createFile () {
@@ -38,7 +38,7 @@ public class writefile {
 	public void addOrderedList (String finalizedLCS) {
 		BufferedWriter bw = null;
 		FileWriter fw = null;
-		
+
 		try {
 			fw = new FileWriter ("answers.txt");
 			bw = new BufferedWriter (fw);

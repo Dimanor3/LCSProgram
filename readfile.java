@@ -1,4 +1,8 @@
-// Bijan Razavi.
+/* 	
+	Bijan Razavi
+	Elizabeth Thomas
+	Gyovanni Boston-Crompton
+*/
 
 import java.io.*;
 import java.util.*;
@@ -19,7 +23,7 @@ public class readfile {
       private Scanner read;
       
       // This arraylist holds the unordered list.
-      private ArrayList<Float> unorderedList = new ArrayList<Float>();
+      private ArrayList<String> unorderedList = new ArrayList<String>();
       
       // This function opens the file.
       public void openFile (String fileName) {
@@ -34,9 +38,9 @@ public class readfile {
       // the unordered list into a float arraylist
       // for isort, afterwards, it returns the
       // arraylist.
-      public ArrayList<Float> readFile () {
+      public ArrayList<String> readFile () {
          while (read.hasNext ()) {
-            unorderedList.add (Float.parseFloat (read.next ().replaceAll ("[;]", "")));
+            unorderedList.add (read.next ().replaceAll ("[;]", ""));
          }
             
          return unorderedList;

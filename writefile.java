@@ -1,4 +1,8 @@
-// Bijan Razavi.
+/* 	
+	Bijan Razavi
+	Elizabeth Thomas
+	Gyovanni Boston-Crompton
+*/
 
 import java.io.File;
 import java.io.IOException;

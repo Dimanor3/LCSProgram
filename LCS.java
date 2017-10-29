@@ -63,7 +63,7 @@ public class LCS {
 	public static void main (String[] args) {
 		String lcsListString = "";
 
-		// Takes the unorderedList to be ordered.
+		// Takes the DNA Strands to have LCS ran on it.
 		ArrayList<String> lcsList = new ArrayList<String> ();
 
         ArrayList<String> finalizedLCS = new ArrayList<String> ();
@@ -81,14 +81,14 @@ public class LCS {
 		for (int i = 0; i < args.length; i++) {
 			rF.openFile (args[i]);
 
-			// Reads selected file.
+			// Reads selected file into lcsList.
 			lcsList.addAll (rF.readFile ());
 		}
 
 		// Closes selected file.
 		rF.closeFile ();
 
-		// Gets the starting time of Quick Sort.
+		// Gets the starting time of findLCS.
 		long start = System.nanoTime ();
 
         System.out.println ("Test: " + lcsList.size ());
@@ -98,10 +98,10 @@ public class LCS {
         		finalizedLCS.add (findLCS (lcsList.get (i + 1), lcsList.get (i)));
         }
 
-		// Gets the ending time of Quick Sort.
+		// Gets the ending time of findLCS.
 		long end = System.nanoTime ();
 
-		// Gets the total time that Quick Sort ran.
+		// Gets the total time that findLCS ran.
 		long totalTime = end - start;
 
 		// Creates answer.txt to be written to.
@@ -132,48 +132,68 @@ public class LCS {
 	}
 
 	public static String findLCS(String str1, String str2) {
+		// Gets the length size of each string.
 		int str1Length = str1.length ();
 		int str2Length = str2.length ();
+		
+		// Builds a table out of the string sizes.
 		int[][] table = new int[str1Length + 1][str2Length + 1];
 
-		//bottom up, compare characters in X and Y
-		//fill the table with integers accordingly
+		/*
+			Bottom up, compare characters in each 
+			element of the table and fill the table
+			with integers accordingly.
+		*/
 		for (int row = 0; row <= str1Length; row++) {
 			for (int column = 0; column <= str2Length; column++) {
 				if (row == 0 || column == 0)
 					table[row][column] = 0;
-				else if (str1.charAt(row-1) == str2.charAt(column-1))
+				else if (str1.charAt (row-1) == str2.charAt (column-1))
 					table[row][column] = table[row-1][column-1] + 1;
 				else
-					table[row][column] = Math.max(table[row-1][column], table[row][column-1]);
+					table[row][column] = Math.max (table[row-1][column], table[row][column-1]);
 			}
 		}
 
-		int find = table[str1Length][str2Length]; //current index, begin at far right corner of table
+		// Current index, begin at far right corner of the table.
+		int find = table[str1Length][str2Length];
 
-		char lcs[] = new char[find + 1]; //array of the characters in the lcs
+		// Array of the characters in the LCS.
+		char lcs[] = new char[find + 1];
 
-		//move through the table, store chars in the lcs output array from the table
+		/*
+			Move through the table and store the
+			characters in the LCS output array 
+			from the table.
+		*/
 		int i = str1Length, j = str2Length;
 		
+		/*
+			Traverses through each possible location check,
+			and determines whether the characters at indices
+			i - 1 and j - 1 are the same, if they are it
+			increments the according LCS position, if not it
+			traverses left or up in the table depending on
+			which indice holds the greater value.
+		*/
 		while (i > 0 && j > 0) {
-			//if characters at indices are the same, corresponds to the diagonal movement in the table
-			if (str1.charAt(i-1) == str2.charAt(j-1)) {
-				lcs[find-1] = str1.charAt(i-1);
+			if (str1.charAt (i-1) == str2.charAt (j-1)) {
+				lcs[find-1] = str1.charAt (i-1);
 
 				i--;
 				j--;
 				find--;
-			}
-
-			//if not the same, traverse left or up accordingly
-			else if (table[i-1][j] > table[i][j-1])
+			} else if (table[i-1][j] > table[i][j-1]) {
 				i--;
-
-			else
+			} else {
 				j--;
+			}
 		}
 
-		return new String (lcs); //return the array of chars as the lcs
+		/*
+			Return the array of chars as the LCS
+			in String format.
+		*/
+		return new String (lcs);
 	}
 }

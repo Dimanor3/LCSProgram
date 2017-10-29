@@ -64,9 +64,11 @@ public class LCS {
 		String orderedListString = "";
 
 		// Takes the unorderedList to be ordered.
-		ArrayList<Float> orderedList = new ArrayList<Float> ();
+		ArrayList<String> lcsList = new ArrayList<String> ();
 
-		ArrayList<Float> tempList = new ArrayList<Float> ();
+		ArrayList<String> tempList = new ArrayList<String> ();
+
+        ArrayList<String> finalizedLCS = new ArrayList<String> ();
 
 		ArrayList<Integer> listSize = new ArrayList<Integer> ();
 
@@ -78,12 +80,12 @@ public class LCS {
 		// Gets access to the writefile class.
 		writefile wF = new writefile ();
 
-		// Gets access to the Qsort class.
-		LCS qS = new LCS ();
+		// Gets access to the LCS class.
+		LCS lcsAccess = new LCS ();
 
 		// Attempts to open selected file(s).
 		for (int i = 0; i < args.length; i++) {
-			rF.openFile(args[i]);
+			rF.openFile (args[i]);
 
 			tempList = rF.readFile ();
 
@@ -92,7 +94,7 @@ public class LCS {
 			totalListSize += tempList.size ();
 
 			// Reads selected file.
-			orderedList.addAll(rF.readFile());
+			lcsList.addAll (rF.readFile ());
 
 			tempList.clear ();
 		}
@@ -101,13 +103,14 @@ public class LCS {
 		rF.closeFile ();
 
 		// Gets the starting time of Quick Sort.
-		double start = System.currentTimeMillis();
+		double start = System.currentTimeMillis ();
 
-		// Quick Sort.
-		orderedList = qS.quickSort (orderedList, orderedList.size () - 1, -1, 0);
+		for (int i = 0; i < args.length; i += 2) {
+    		orderedList = findLCS (lcsList[i], lcsList[i + 1]);
+        }
 
 		// Gets the ending time of Quick Sort.
-		double end = System.currentTimeMillis();
+		double end = System.currentTimeMillis ();
 
 		// Gets the total time that Quick Sort ran.
 		double totalTime = end - start;
@@ -131,7 +134,7 @@ public class LCS {
 		wF.addOrderedList (orderedListString);
 	}
 
-	public static char[] findLCS(String str1, String str2) {
+	public static String findLCS(String str1, String str2) {
 		int str1Length = str1.length();
 		int str2Length = str2.length();
 		int[][] table = new int[str1Length + 1][str2Length + 1];
@@ -174,15 +177,6 @@ public class LCS {
 				j--;
 		}
 
-		return lcs; //return the array of chars as the lcs
-
-		System.out.println("------------------------------------------------------------------");
-		System.out.println("The LCS of DNA sequences: \n" + str1 + "\n" + str2 + "\n is: ");
-		for (int k = 0; k < lcs.length - 1; k++) {
-			System.out.print(lcs[k]);
-		}
-		
-		System.out.println("\n The length is " + table[str1Length][str2Length]);
-		System.out.println("------------------------------------------------------------------");
+		return new String (lcs); //return the array of chars as the lcs
 	}
 }

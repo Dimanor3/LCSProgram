@@ -78,21 +78,22 @@ public class LCS {
 
 		// Attempts to open selected file(s).
 		for (int i = 0; i < args.length; i++) {
+            // Opens selected files.
 			rF.openFile (args[i]);
             
             System.out.println (args[i] + ": " + rF.readFile ());
 
 			// Reads selected file into lcsList.
 			lcsList.addAll (rF.readFile ());
-		}
 
-		// Closes selected file.
-		rF.closeFile ();
+    		// Closes selected file.
+	    	rF.closeFile ();
+		}
 
 		// Gets the starting time of findLCS.
 		long start = System.nanoTime ();
 
-//        System.out.println ("Test: " + lcsList);
+        //System.out.println ("Test: " + lcsList);
 
 		for (int i = 0; i < lcsList.size (); i += 2) {
             if (lcsList.size () != i + 1)

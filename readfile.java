@@ -52,4 +52,8 @@ public class readfile {
 	public void closeFile () {
 		read.close ();
 	}
+
+	public void clearFile () {
+	    dnaLCS.clear ();
+	}
 }

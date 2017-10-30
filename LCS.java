@@ -81,10 +81,10 @@ public class LCS {
             // Opens selected files.
 			rF.openFile (args[i]);
             
-            System.out.println (args[i] + ": " + rF.readFile ());
-
 			// Reads selected file into lcsList.
 			lcsList.addAll (rF.readFile ());
+            
+            rF.clearFile ();
 
     		// Closes selected file.
 	    	rF.closeFile ();
@@ -92,8 +92,6 @@ public class LCS {
 
 		// Gets the starting time of findLCS.
 		long start = System.nanoTime ();
-
-        //System.out.println ("Test: " + lcsList);
 
 		for (int i = 0; i < lcsList.size (); i += 2) {
             if (lcsList.size () != i + 1)

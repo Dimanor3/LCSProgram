@@ -18,11 +18,12 @@
 	Breakdown of Algorithm
 	----------------------
 
-	The quicksort algorithm requires you to pick a pivot and look for all numbers
-	less than the pivot. These numbers are set to the left of the array, and the
-	greater numbers are set to the right of the array. The pivot is placed in the
-	center. Quicksort then goes ahead and does the same for the left side of the array
-	and the right side of the array until the whole thing is sorted.
+	The longest common subsequence algorithm compares a table of characters, implemented as a
+	two dimensional array, and searches for character matches in the horizontal and vertical 
+	character intersection. It then traverses the table, moving either left or up depending on 
+	the table entry. When the characters match, the traversal may move diagonally. Matching characters
+	get added to the longest common subsequence (in our implementation this is an array of
+	characters LCS).
 
 	Our Compiler
 	------------
@@ -44,7 +45,11 @@
 
     Some issues we ran into was an odd duplication issue. Whenever we used two files,
     one of which was empty and another of which had content, the program reads the
-    first file into the ArrayList twice.
+    first file into the ArrayList twice. This issue was solved by clearing the unorderedlist
+    in between reads (within the readFile class.)
+    
+    An issue with this program is that it could be made even more space efficient. We did not
+    attempt to do so, but future modifications could improve on this factor.
 
 	Data Structure Design Description
 	---------------------------------
@@ -52,6 +57,9 @@
 	The data structure we choose to use was an arraylist, this is because arraylists are
 	scalable unlike their array counterparts. This is very convenient for this project
 	since the list of numbers we could be given can end up being any size.
+	
+	The data structure used to implement the LCS table for the algorithm was a two dimensional
+	array of characters.
 */
 
 import java.io.*;

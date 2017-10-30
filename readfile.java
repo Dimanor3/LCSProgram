@@ -7,7 +7,7 @@
 import java.io.*;
 import java.util.*;
 
-/**
+/*
 	This class is used to get access to the
 	DNA strands provided by a user provided
 	file.
@@ -23,10 +23,10 @@ public class readfile {
 	private Scanner read;
 
 	// This arraylist holds the DNA strands.
-	private ArrayList<String> unorderedList = new ArrayList<String>();
+	private ArrayList<String> dnaLCS = new ArrayList<String> ();
 
- /*
-	* This function opens the file.
+    /*
+	    This function opens the file.
 	*/
 	public void openFile (String fileName) {
 		try {
@@ -35,16 +35,17 @@ public class readfile {
 			System.out.println ("Could not find file\n");
 		}
 	}
-	/**
-	* This function reads the file and turns the DNA Strands list into a
-	* String arraylist for main, afterwards, it returns the arraylist.
+
+	/*
+	    This function reads the file and turns the DNA Strands list into a
+	    String arraylist for main, afterwards, it returns the arraylist.
 	*/
 	public ArrayList<String> readFile () {
 		while (read.hasNext ()) {
-			unorderedList.add (read.next ().replaceAll ("[;]", ""));
+			dnaLCS.add (read.next ().replaceAll ("[;]", ""));
 		}
 
-		return unorderedList;
+		return dnaLCS;
 	}
 
 	// This function closes the file.

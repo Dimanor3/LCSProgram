@@ -12,8 +12,8 @@
 	--------------------------
 
 	For this we had 3 classes, all which were imported from the insertion sort homework.
-	With these 3 classes, we went ahead and modified them to both include quicksort
-	as well as fix any issues that the previous assignment had and add some new functionality.
+	With these 3 classes, we went ahead and modified them to both include findLCS as well
+    as fix any issues that the previous assignment had and add some new functionality.
 
 	Breakdown of Algorithm
 	----------------------
@@ -24,28 +24,27 @@
 	center. Quicksort then goes ahead and does the same for the left side of the array
 	and the right side of the array until the whole thing is sorted.
 
-	My Compiler
-	-----------
+	Our Compiler
+	------------
 
-	We wrote our program in java, so my compiler was javac.
+	We wrote our program in java, so our compiler was javac.
 
-	My Platform
-	-----------
+	Our Platform
+	------------
 
-	The platform we used to write this program in is an Intel i5 processor
+	The platform we used to write this program in was an Intel i5 processor
 	running windows 10.
 
 	What works and Fails
 	--------------------
 
 	Our program properly reads any number of files, places them into an ArrayList,
-	checks the amount of time it takes for the program to run, and outputs all the
-	required information.
+	checks the amount of time it takes for the program to run, runs a working findLCS 
+    function on the ArrayList, and outputs all the required information.
 
-	The part this program currently fails in is the quicksort itself. Unfortunately,
-	we weren't able to get this sorting algorithm to run properly as it currently sets
-	every position as the pivot and does this multiple times. This was more than likely
-	because we don't have a proper quit functionality in place.
+    Some issues we ran into was an odd duplication issue. Whenever we used two files,
+    one of which was empty and another of which had content, the program reads the
+    first file into the ArrayList twice.
 
 	Data Structure Design Description
 	---------------------------------
@@ -80,6 +79,8 @@ public class LCS {
 		// Attempts to open selected file(s).
 		for (int i = 0; i < args.length; i++) {
 			rF.openFile (args[i]);
+            
+            System.out.println (args[i] + ": " + rF.readFile ());
 
 			// Reads selected file into lcsList.
 			lcsList.addAll (rF.readFile ());
@@ -91,7 +92,7 @@ public class LCS {
 		// Gets the starting time of findLCS.
 		long start = System.nanoTime ();
 
-        System.out.println ("Test: " + lcsList.size ());
+//        System.out.println ("Test: " + lcsList);
 
 		for (int i = 0; i < lcsList.size (); i += 2) {
             if (lcsList.size () != i + 1)
